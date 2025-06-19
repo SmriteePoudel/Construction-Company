@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left building -->
+  <rect x="4" y="14" width="6" height="14" rx="1.5" fill="#BFA8E6" stroke="#BFA8E6" stroke-width="1.5"/>
+  <rect x="6" y="22" width="2" height="4" rx="1" fill="#FFD1E3"/>
+  <!-- Middle building (tallest) -->
+  <rect x="13" y="8" width="6" height="20" rx="1.5" fill="#FFB7CE" stroke="#BFA8E6" stroke-width="1.5"/>
+  <rect x="15" y="20" width="2" height="4" rx="1" fill="#FFD1E3"/>
+  <rect x="15" y="14" width="2" height="4" rx="1" fill="#FFD1E3"/>
+  <!-- Right building -->
+  <rect x="22" y="16" width="6" height="12" rx="1.5" fill="#FFD1E3" stroke="#BFA8E6" stroke-width="1.5"/>
+  <rect x="24" y="22" width="2" height="4" rx="1" fill="#BFA8E6"/>
+</svg> 
