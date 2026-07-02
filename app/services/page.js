@@ -1,83 +1,76 @@
-"use client";
-import { useEffect, useState } from "react";
-import ServicesSection from "../../components/ServicesSection";
-
 export default function ServicesPage() {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchServices() {
-      try {
-        const res = await fetch("/api/services");
-        if (!res.ok) throw new Error("Failed to fetch services");
-        const data = await res.json();
-        setServices(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchServices();
-  }, []);
+  const services = [
+    {
+      title: "Residential Construction",
+      description:
+        "Custom homes built to your exact specifications with premium materials and expert craftsmanship.",
+      image:
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Commercial Construction",
+      description:
+        "Office buildings, retail spaces, and industrial facilities designed for functionality and modern aesthetics.",
+      image:
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Renovation & Remodeling",
+      description:
+        "Transform your existing space with our expert renovation services, from kitchen remodels to full home makeovers.",
+      image:
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Project Management",
+      description:
+        "Comprehensive project management ensuring your construction project stays on time, within budget, and exceeds expectations.",
+      image:
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Interior Design",
+      description:
+        "Professional interior design services to create beautiful, functional spaces that reflect your style and meet your needs.",
+      image:
+        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      title: "Maintenance Services",
+      description:
+        "Ongoing maintenance and repair services to keep your property in excellent condition and preserve its value.",
+      image:
+        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
+    },
+  ];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-100 to-yellow-100 text-black py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6">Our Services</h1>
-          <p className="text-xl text-pink-300 max-w-3xl mx-auto">
+    <div className="min-h-screen bg-pink-50 text-black">
+      <section className="py-20 bg-gradient-to-r from-purple-100 to-yellow-100">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold mb-6">Our Services</h1>
+          <p className="text-lg text-pink-300 mb-8">
             Discover the wide range of construction services we offer, tailored
             to meet your unique needs and vision.
           </p>
-        </div>
-      </section>
-
-      {/* Services Overview */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-white mb-6">
-              What We Offer
-            </h2>
-            <p className="text-lg text-purple-300 max-w-3xl mx-auto">
-              From design and planning to construction and finishing touches,
-              our team delivers excellence at every stage.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="bg-white rounded-xl shadow-md p-8 flex flex-col items-center text-center border border-pink-100 hover:shadow-lg transition"
+              >
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-48 object-cover rounded mb-4"
+                />
+                <h2 className="text-2xl font-bold text-pink-500 mb-2">
+                  {service.title}
+                </h2>
+                <p className="text-gray-700">{service.description}</p>
+              </div>
+            ))}
           </div>
-          {loading ? (
-            <div className="text-center text-lg text-gray-500">
-              Loading services...
-            </div>
-          ) : error ? (
-            <div className="text-center text-red-500">{error}</div>
-          ) : services.length === 0 ? (
-            <div className="text-center text-gray-500">No services found.</div>
-          ) : (
-            <ServicesSection services={services} />
-          )}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Ready to Get Started?
-          </h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Contact us today to discuss your project requirements and get a free
-            consultation from our experienced team.
-          </p>
-          <a
-            href="/contact"
-            className="bg-pink-200 hover:bg-pink-300 text-black px-8 py-4 rounded-lg font-semibold text-lg transition-colors duration-300 inline-block"
-          >
-            Get Free Quote
-          </a>
         </div>
       </section>
     </div>
